@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { rutaPago } = require('../controllers/paymentController');
+const { rutaPago, getProductos, procesarPago } = require('../controllers/paymentController');
 
-console.log('¿Qué es rutaPago?', rutaPago); // <- esto es clave
+// Ruta para obtener productos
+router.get('/productos', getProductos);
 
+// Ruta para procesar el pago
+router.post('/crear-preferencia', procesarPago);
+
+// Ruta original
 router.post('/pago', rutaPago);
 
 module.exports = router;
